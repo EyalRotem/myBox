@@ -7,7 +7,7 @@ import Gui.serverLogGui;
 /**
  * main class that start the server
  * 
- * @author Niv HAHOMO
+ * @author Niv
  *
  */
 public class ServerMain {
