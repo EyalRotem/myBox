@@ -3,7 +3,7 @@ package Controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import Client.ClientMain;
+import Client.MainClient;
 import Entites.ForgotPassEntity;
 import Entites.MessageObject;
 import Gui.ForgotPassGui;
@@ -13,7 +13,10 @@ public class ForgotPassController extends AbstractTransfer {
 	private ForgotPassGui fpGui;
 	private ForgotPassEntity fpEntity;
 	private ForgotPassController TempController;
+	private String user;
+	private String usersentallready=null;
 
+	
 	public ForgotPassController(ForgotPassGui fpg) {
 		
 		TempController=this;
@@ -28,14 +31,14 @@ public class ForgotPassController extends AbstractTransfer {
 
 		public void actionPerformed(ActionEvent ev) {
 		
-			String user = fpGui.getTextUserName();
+			 user = fpGui.getTextUserName();
 			
 			if (user.equals("")) 
 				fpGui.setWarningMessageVisibleTrue("Please fill the empty blank");
-			else
-			{
+			
+			else {
 				MessageObject msg = new MessageObject(user,"ForgotPassEmail");
-				ClientMain.clien.setCurrObj(getTempController());
+				MainClient.clien.setCurrObj(getTempController());
 				sendToServer(msg);
 			}
 		}
@@ -52,12 +55,7 @@ public class ForgotPassController extends AbstractTransfer {
 	
 	public void handleDBResult(Object message) {
 		
-		if(message.equals("EmailFound"))    //SEND CONFIRMATION TO SYS MANAGER
-				{
-			System.out.println("UserName: <" + fpGui.getTextUserName() + "> has reset password" );
-			
-				}
-			
+		//
 
 	}
 	

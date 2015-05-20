@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-import Client.ClientMain;
+import Client.MainClient;
 import Client.myBoxClient;
 import Entites.ClientEntity;
 import Entites.LoginEntity;
@@ -26,17 +26,18 @@ public class ClientController {
 	 */
 
 	public ClientController(ClientGui clientGui, ClientEntity clientEntity) {
+		
 		this.clientGui = clientGui;
 		this.clientEntity = clientEntity;
 		clientGui.addOKActionListener(new OKListener());
 		clientGui.addCancelActionListener(new CancelListener());
+		
 	}
 
 	public boolean checkInput() {
 		try {
 			if (clientGui.getHost().equals("") || clientGui.getPort() == 0) {
-				clientGui
-						.displayWarnningMessage("Please fill the empty blanks");
+				clientGui.displayWarnningMessage("Please fill the empty blanks");
 				clientGui.clearFields();
 				return false;
 			}
@@ -65,13 +66,11 @@ public class ClientController {
 				int port = clientGui.getPort();
 				clientEntity.setHost(host);
 				clientEntity.setPort(port);
-				ClientMain.clien = new myBoxClient(host, port); // singleton
+				MainClient.clien = new myBoxClient(host, port); // singleton
 
-				if (ClientMain.clien.isConnected()) {
-					clientGui.dispose(); // remove the current window to display
-											// login window
-
-
+				if (MainClient.clien.isConnected()) {
+					clientGui.dispose(); // remove the current window to display login window
+					
 					// create a new login controller
 					LoginGui loginGui = new LoginGui();
 					LoginEntity loginEntity = new LoginEntity();
@@ -83,14 +82,11 @@ public class ClientController {
 				}
 
 			} catch (NumberFormatException e) {
-				clientGui
-						.displayWarnningMessage("Faild to connect. check IP and port!");
+				clientGui.displayWarnningMessage("Faild to connect. check IP and port!");
 				clientGui.clearFields();
-				// e.printStackTrace();
 			} catch (IOException e) {
-				clientGui
-						.displayWarnningMessage("Connection problem. check IP and Port.");
-				// e.printStackTrace();
+				clientGui.displayWarnningMessage("Connection problem. check IP and Port.");
+
 			}
 		}
 	}

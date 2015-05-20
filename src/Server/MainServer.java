@@ -10,7 +10,7 @@ import Gui.serverLogGui;
  * @author Niv
  *
  */
-public class ServerMain {
+public class MainServer {
 
 	public static void main(String[] args) {
 		

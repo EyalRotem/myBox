@@ -8,7 +8,7 @@ import Entites.*;
  * @author Niv
  *
  */
-public class ClientMain {
+public class MainClient {
 
 	 public static myBoxClient clien;
 	 

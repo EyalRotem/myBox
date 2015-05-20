@@ -3,7 +3,7 @@ package Controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import Client.ClientMain;
+import Client.MainClient;
 import Entites.MessageObject;
 import Gui.Workspace_User_Gui;
 
@@ -25,7 +25,7 @@ public class Workspace_User_Controller extends AbstractTransfer{
 		public void actionPerformed(ActionEvent event) {
 			
 			if (event.getSource() == workSpaceGui.getLogoutButton()) { //if the logout button pressed
-				MessageObject message = new MessageObject(ClientMain.clien.getCurrUser(), "updateStatus0");
+				MessageObject message = new MessageObject(MainClient.clien.getCurrUser(), "updateStatus0");
 				sendToServer(message);
 				workSpaceGui.dispose();
 			}

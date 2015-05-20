@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import Client.ClientMain;
+import Client.MainClient;
 import Entites.*;
 import Gui.*;
 
@@ -53,7 +53,7 @@ public class LoginController extends AbstractTransfer {
 					loginEntity.setUserName(user);
 					MessageObject msg = new MessageObject(loginEntity,"searchLogin");
 					sendToServer(msg);
-					ClientMain.clien.setCurrObj(getTempController());
+					MainClient.clien.setCurrObj(getTempController());
 				} catch (Exception e) {
 					System.out.println("logincontroller");
 				}
@@ -67,14 +67,14 @@ public class LoginController extends AbstractTransfer {
 		if (user.getStatus() == 1)
 			loginGui.setWarningMessageVisibleTrue("This username has already logged to system.");
 		else {
-			ClientMain.clien.setCurrUser(user);
+			MainClient.clien.setCurrUser(user);
 			UpdateDB(); // update the status to 1 that we know user is logged to the system
 			loginGui.dispose(); // - - > LEAVE LOGIN FRAME
 
 			if(user.getPrivilege ()==0){ //open user gui
 				
-				Workspace_User_Gui workspaceg = new Workspace_User_Gui();
-				Workspace_User_Controller workspacec = new Workspace_User_Controller(workspaceg);
+				MainwindowUser_Gui workspaceg = new MainwindowUser_Gui();
+				MainwindowUser_Controller workspacec = new MainwindowUser_Controller(workspaceg);
 				
 			}
 			else if(user.getPrivilege() == 1){	//open system manager gui

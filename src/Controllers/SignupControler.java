@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import Gui.*;
-import Client.ClientMain;
+import Client.MainClient;
 import Entites.*;
 
 public class SignupControler extends AbstractTransfer {
@@ -44,7 +44,7 @@ public class SignupControler extends AbstractTransfer {
 				uentity = new User(user,pass,first,last,0,0);
 				System.out.println(user + pass+  first+ last);
 				MessageObject msg = new MessageObject(uentity,"CheckEmailValidity");
-				ClientMain.clien.setCurrObj(getTempController());
+				MainClient.clien.setCurrObj(getTempController());
 				sendToServer(msg);
 			}
 			

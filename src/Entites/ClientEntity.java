@@ -2,22 +2,22 @@ package Entites;
 
 public class ClientEntity {
 
-        private String host;
-        private int port;
-        
-        public void setHost(String host) {
-                this.host = new String(host);
-        }
+	private String host;
+	private int port;
 
-        public void setPort(int port) {
-                this.port = port;
-        }
+	public void setHost(String host) {
+		this.host = new String(host);
+	}
 
-        public String getHost() {
-                return host;
-        }
+	public void setPort(int port) {
+		this.port = port;
+	}
 
-        public int getPort() {
-                return port;
-        }
+	public String getHost() {
+		return host;
+	}
+
+	public int getPort() {
+		return port;
+	}
 }

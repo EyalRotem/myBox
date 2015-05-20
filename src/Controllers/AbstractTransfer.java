@@ -2,7 +2,7 @@ package Controllers;
 
 import java.io.IOException;
 
-import Client.ClientMain;
+import Client.MainClient;
 import Gui.AbstractGui;
 
 public abstract class AbstractTransfer {
@@ -20,7 +20,7 @@ public abstract class AbstractTransfer {
 
 	protected void sendToServer(String request) {
 		try {
-			ClientMain.clien.sendToServer(request);
+			MainClient.clien.sendToServer(request);
 		} catch (IOException e) {
 			theGui.displayInfoMessage("Error: Server comunication problem",
 					"Commuinication Error", 0);
@@ -30,7 +30,7 @@ public abstract class AbstractTransfer {
 
 	public void sendToServer(Object request) {
 		try {
-			ClientMain.clien.sendToServer(request);
+			MainClient.clien.sendToServer(request);
 		} catch (IOException e) {
 			theGui.displayInfoMessage("Error: Server comunication problem","Commuinication Error", 0);
 			e.printStackTrace();

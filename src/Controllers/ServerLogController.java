@@ -3,9 +3,6 @@ package Controllers;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import Client.ClientMain;
-import Entites.MessageObject;
 import Entites.User;
 import Gui.serverLogGui;
 
@@ -21,8 +18,6 @@ public class ServerLogController extends AbstractTransfer{
 		
 	}
 
-
-	
 	class DisconnectedListener implements ActionListener {
 
 		@Override
@@ -36,12 +31,16 @@ public class ServerLogController extends AbstractTransfer{
 
 		if (Task.equals("login")) {
 			svlogui.getTextArea().setForeground(Color.green);
-			svlogui.getTextArea().append("User name:  " + usr.getUserName() +"(" + usr.getFirstName() + usr.getLastName() + ")"+ "has just logged in\n");
+			svlogui.getTextArea().append("User name:  " + usr.getUserName() +"(" + usr.getFirstName() + " " + usr.getLastName() + ")"+ "has just logged in\n");
 		}
 		if (Task.equals("logout")) {
 			svlogui.getTextArea().setForeground(Color.red);
-			svlogui.getTextArea().append("User name:  " + usr.getUserName() +"(" + usr.getFirstName() + usr.getLastName() + ")"+ "has just logged out\n");
+			svlogui.getTextArea().append("User name:  " + usr.getUserName() +"(" + usr.getFirstName() + " " + usr.getLastName() + ")"+ "has just logged out\n");
 
+		}
+		if(Task.equals("signup")){
+			svlogui.getTextArea().setForeground(Color.blue);
+			svlogui.getTextArea().append("User name:  " + usr.getUserName() +"(" + usr.getFirstName() + " " + usr.getLastName() + ")"+ "has just signed up\n");
 		}
 
 	}
