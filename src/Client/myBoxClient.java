@@ -24,7 +24,7 @@ public class myBoxClient extends ObservableClient {
 	 * The interface type variable. It allows the implementation of the display
 	 * method in the client.
 	 */
-	ChatIF clientUI;
+	
 	private Object currController;
 	private User currUser;
 
@@ -71,7 +71,6 @@ public class myBoxClient extends ObservableClient {
 				
 				if (((String) message).equals("ForgotPassEmailFound")) {
 					((ForgotPassController) currController).getFPGui().setWarningMessageVisibleTrue("Email exists, wait for confirmation");
-					((ForgotPassController) currController).handleDBResult(message);
 				}
 				
 				if (((String) message).equals("SignUpEmailNotFound")) {
@@ -91,25 +90,6 @@ public class myBoxClient extends ObservableClient {
 
 		notify();
 	}
-
-	/**
-	 * This method handles all data coming from the UI
-	 *
-	 * @param message
-	 *            The message from the UI.
-	 */
-	public void handleMessageFromClientUI(String message) {
-		try {
-			sendToServer(message);
-		} catch (IOException e) {
-			clientUI.display("Could not send message to server.  Terminating client.");
-			quit();
-		}
-	}
-
-	/**
-	 * This method terminates the client.
-	 */
 
 	public Object getCurrObj() {
 		return currController;
